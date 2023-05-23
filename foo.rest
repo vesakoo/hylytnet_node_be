@@ -1,4 +1,4 @@
-POST https://hooks.slack.com/services/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
+POST {{$dotenv SLACKWEBHOOK}}
 Content-type: application/json
 
 {

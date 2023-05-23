@@ -1,6 +1,7 @@
 const { response } = require('express')
 const express = require('express')
 const cors = require('cors')
+require('dotenv').config()
 const axios = require('axios')
 const app = express()
 app.use(cors())
@@ -43,7 +44,7 @@ app.post('/api/feedback', (request,response) =>{
   blocks.push({ type: 'divider'})
   const slackMsg = {blocks}
   axios.post(
-    'https://hooks.slack.com/services/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',
+    process.env.SLACKWEBHOOK,
     JSON.stringify(slackMsg)
   )
   .then(resp =>{
@@ -90,7 +91,7 @@ app.post('/api/wreckdiscovery' , (request,response) =>{
   blocks.push({ type: 'divider'})
   const slackMsg = {blocks}
   axios.post(
-    'https://hooks.slack.com/services/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',
+    process.env.SLACKWEBHOOK,
     JSON.stringify(slackMsg)
   )
   .then(resp =>{
